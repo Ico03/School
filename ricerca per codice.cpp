@@ -99,7 +99,7 @@ int main()
         cout << "1. caricare la struttutra\n";
         cout << "2. Stampo struttura\n";
         cout << "3. Ricerca\n";
-        cout << "4. Uscita";
+        cout << "4. Uscita\n";
         cin >> scelta;
 
         switch (scelta)
@@ -112,6 +112,7 @@ int main()
                 break;
             case 3:
                 ricerca();
+
                 break;
         }
     }
