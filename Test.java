@@ -36,86 +36,86 @@ public class Test
                         if(c>47 && c<58)
                         {
                             california.push(c);
-                             System.out.println("op 1 numeri");
+                            System.out.println("op 1 numeri");
                         }
                         else
                         {
-                            
-                            if(texas.top == null)//texas.push(c);
-                              {  texas.push(c);
-                                 System.out.println("op top null");}
-                            else
-                                if(c==')')
-                                {
-                                    while(texas.top.numero != '(')
-                                    {
-                                        california.push(texas.pop());
-                                         System.out.println("op 1 finchè top )");
-                                    }
-                                }
-                                else
-                                switch(texas.top.numero)
-                                {
-                                    case '+':
-                                    case '-':
-                                        if(c=='+' || c=='-' || c==')')
+                            switch(c)
+                            {
+                                case '+':
+                                case '-':
+                                if(texas.top==null || texas.top.numero=='(')
                                         {
-                                            ap = texas.top.numero;
-                                            california.push(ap);
-                                            texas.pop();
-                                            texas.push(c);
-                                            System.out.println("op 2 con top + -");
+                                           texas.push(c);
                                         }
                                         else
-                                            if(c=='*' || c=='/' || c=='(')
-                                            {
-                                                texas.push(c);
-                                                System.out.println("op 1 con top + -");
-                                            }
-                                        break;
-                                            
-                                    case '*':
-                                    case '/':
-                                        if(c=='+' || c=='-' || c=='*' || c=='/' || c==')')//controlare se le parentesi chiuse vanno in california
-                                        {
-                                            ap= texas.top.numero;
-                                            california.push(ap);
-                                            texas.pop();
-                                            texas.push(c);
-                                            System.out.println("op 2 con top * /");
-                                        }
-                                        else 
-                                            if(c=='(')
-                                            {
-                                                texas.push(c);
-                                                 System.out.println("op 1 con top * /");
-                                            }
-                                            
-                                        break;
-                                    case '(':
-                                        if(
-                                }
-                                
-                                if(c=='=')//c== =
-                                {
-                                    System.out.println("C"+c);
-                                    while(texas.top != null)
+                                    if(texas.top.numero=='+' || texas.top.numero=='-' || texas.top.numero=='*' || texas.top.numero=='/')
                                     {
-                                         System.out.println("op sposta con top =");
+                                        ap = texas.top.numero;
+                                        california.push(ap);
+                                        texas.pop();
+                                        texas.push(c);
+                                        System.out.println("op 2 con top + -");
+                                    }
+                                    break;
+                                    
+                                case '*':
+                                case '/':
+                                    if(texas.top.numero=='*' || texas.top.numero=='/')
+                                    {
+                                        ap = texas.top.numero;
+                                        california.push(ap);
+                                        texas.pop();
+                                        texas.push(c);
+                                        System.out.println("op 2 con top * /");
+                                    }
+                                    else
+                                        if(texas.top == null || texas.top.numero=='+' || texas.top.numero=='-' || texas.top.numero=='(')
+                                        {
+                                            texas.push(c);
+                                        }
+                                    break;    
+                                        
+                                case '(':
+                                    if(texas.top == null || texas.top.numero=='+' || texas.top.numero=='-' || texas.top.numero=='*' || texas.top.numero=='/')
+                                    {
+                                        texas.push(c);
+                                    }
+                                    break;
+                                    
+                                case ')':
+                                    if(texas.top == null || texas.top.numero=='+' || texas.top.numero=='-' || texas.top.numero=='*' || texas.top.numero=='/')
+                                    {
+                                        ap = texas.top.numero;
+                                        california.push(ap);
+                                        texas.pop();
+                                        texas.push(c);
+                                    }
+                                    else
+                                        if(texas.top.numero=='(' || texas.top.numero==')')
+                                        {
+                                            texas.pop();
+                                        }
+                                    break;    
+                                case '=':
+                                    while(texas.top!=null)
+                                    {
+                                        if(texas.top.numero=='(' || texas.top.numero==')')
+                                        {
+                                            texas.pop();
+                                        }
                                         ap = texas.top.numero;
                                         System.out.println("ap " +ap);
                                         california.push(ap);
                                         texas.pop();
                                     }
-                                } 
-                                                                        
+                            }
                         }
-                    }
                    
-                    
+                    }
+                                   
                     break;
-                    
-                    
+                                  
                 case 2:
                     texas.stampa();
                     california.stampa();
