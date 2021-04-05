@@ -5,7 +5,7 @@ public class Texas
     static Oggetto top/*cima*/, bottom/*fondo stack*/, elemento/*nome variabile*/;
     static char n, numchar, ap, c =' ';
     
-    public void stampa()
+    public void stampa()//funzione che permette di stampare tutto lo stack
     {
         elemento=top;
         if(elemento==null)
@@ -19,11 +19,10 @@ public class Texas
             System.out.println("\n");
     }
     
-    public char pop()
+    public char pop()//estraggo un elemento dal top dello stack
     {
         if (top!=null)
-        {
-            //System.out.println("ESTRAGGO" + top.numero);
+        {           
             ap = top.numero;
             c = top.numero;
             top=top.prec;
@@ -35,7 +34,7 @@ public class Texas
         return c;
     }
     
-    public void push(char n)
+    public void push(char n)//inserisco un elemento nel top dello stack
     {
         elemento = new Oggetto(n);
         if (bottom == null)
