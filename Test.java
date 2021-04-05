@@ -34,12 +34,10 @@ public class Test
                     for(int i=0; i<inserimento.length(); i++)
                     {
                         c = inserimento.charAt(i);
-                        System.out.println("c " +c);
                         
                         if(c>47 && c<58)
                         {
                             california.push(c);
-                            System.out.println("op 1 numeri");
                         }
                         else
                         {
@@ -49,10 +47,10 @@ public class Test
                                 case '-':
                                     
                                 if(texas.top==null || texas.top.numero=='(')
-                                        {
-                                           texas.push(c);
-                                        }
-                                        else
+                                {
+                                    texas.push(c);
+                                }
+                                else
                                     if(texas.top.numero=='+' || texas.top.numero=='-' || texas.top.numero=='*' || texas.top.numero=='/')
                                     {
                                         if(texas.top.numero!='(')
@@ -61,7 +59,6 @@ public class Test
                                             california.push(ap);
                                             texas.pop();
                                             texas.push(c);
-                                            System.out.println("op 2 con top + -");
                                         }
                                     
                                     }
@@ -76,17 +73,15 @@ public class Test
                                         }
                                         else
                                         if(texas.top.numero=='*' || texas.top.numero=='/')
-                                    {
-                                        if(texas.top.numero!='(')
                                         {
-                                            ap = texas.top.numero;
-                                            california.push(ap);
-                                            texas.pop();
-                                            texas.push(c);
-                                            System.out.println("op 2 con top * /");
+                                          if(texas.top.numero!='(')
+                                            {
+                                                ap = texas.top.numero;
+                                                california.push(ap);
+                                                texas.pop();
+                                                texas.push(c);
+                                            }                               
                                         }
-                                        
-                                    }
                                     break;    
                                         
                                 case '(':
@@ -112,10 +107,6 @@ public class Test
                                     while(texas.top!=null)
                                     {
                                         california.push(texas.pop());
-                                        /*ap = texas.top.numero;
-                                        System.out.println("ap " +ap);
-                                        california.push(ap);
-                                        texas.pop();*/
                                     }
                                     
                             }
@@ -123,16 +114,15 @@ public class Test
                     }
                     texas.stampa();
                     california.stampa();
+                    //carico lo stack all'interno della variabile app
                     while (california.top != null)
                     {
-                        System.out.println("SONO IN WHILE");
                         app += california.top.numero;
                         california.pop();
                     }
-                    
+                    //carico la variabile oggio che conterrà la stringa in notazione
                     for(int i=app.length()-1; i>=0; i--)
                     {
-                        System.out.println("SONO IN for");
                         if(app.charAt(i)!='(')
                         {
                             oggio += app.charAt(i);
@@ -146,39 +136,33 @@ public class Test
                     for(int i=0; i<oggio.length(); i++)
                     {
                         c=oggio.charAt(i);
-                        if(c>='0' && c<='9')
+                        if(c>='0' && c<='9') //c==numero carica stack mexico 
                         {
                             op=(double)c-'0';
                             mexico.push(op);
-                            System.out.println("C "+c);
-                            System.out.println("TOP" +mexico.top.numer);
                         }
                         else
                         {
                             op2=mexico.pop();
                             op1=mexico.pop();
-                            switch(c)
+                            switch(c) //effettuo le varie op. con gli operandi
                             {
                                 case '+':
                                      mexico.push(op1+op2);
-                                     System.out.println(mexico.top.numer);
                                      break;
                                 case '-':
                                      mexico.push(op1-op2);
-                                     System.out.println(mexico.top.numer);
                                      break;
                                 case '*':
                                      mexico.push(op1*op2);
-                                     System.out.println(mexico.top.numer);
                                      break;
                                 case '/':
                                      mexico.push(op1/op2);
-                                     System.out.println(mexico.top.numer);
                                      break;
                             }
                         }
                     }
-                    System.out.println("risultato: "+mexico.top.numer);
+                    System.out.println("risultato: "+ mexico.top.numer);
                     break;
                     
                 
